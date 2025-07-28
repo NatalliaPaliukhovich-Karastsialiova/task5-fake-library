@@ -29,12 +29,12 @@ export default function Home() {
     exportToCSV(books);
   };
 
-  const getBooks = async () => {
+  const getBooks = async (likesParam = likes) => {
     try{
       const { ok, data } = await loadBooks({
         seed,
         lang,
-        likes,
+        likes: likesParam,
         reviews,
         page: 0,
         size: PAGE_SIZE,
@@ -75,11 +75,12 @@ export default function Home() {
   }, [page]);
 
   useEffect(() => {
-    getBooks(true);
+    getBooks();
   }, [seed, lang, reviews]);
 
   const handleCommit = () => {
-    getBooks(true);
+    setLikes(likes);
+    getBooks( likes);
   };
 
   useEffect(() => {
