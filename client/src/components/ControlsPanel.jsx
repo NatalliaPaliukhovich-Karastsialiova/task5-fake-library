@@ -11,6 +11,7 @@ export default function ControlsPanel({
   setReviews,
   regions,
   getSeed,
+  handleCommit,
   viewMode,
   setViewMode,
   exportCSV
@@ -54,6 +55,8 @@ export default function ControlsPanel({
               step={0.1}
               value={likes}
               onChange={(e) => setLikes(parseFloat(e.target.value))}
+              onMouseUp={handleCommit}
+              onTouchEnd={handleCommit}
             />
             <div>{likes.toFixed(1)}</div>
           </Form.Group>

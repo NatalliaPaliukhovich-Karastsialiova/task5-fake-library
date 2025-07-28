@@ -76,7 +76,11 @@ export default function Home() {
 
   useEffect(() => {
     getBooks(true);
-  }, [seed, lang, likes, reviews]);
+  }, [seed, lang, reviews]);
+
+  const handleCommit = () => {
+    getBooks(true);
+  };
 
   useEffect(() => {
     const loadRegions = async () => {
@@ -126,6 +130,7 @@ export default function Home() {
           setReviews={setReviews}
           regions={regions}
           getSeed={getSeed}
+          handleCommit={handleCommit}
           viewMode={viewMode}
           setViewMode={setViewMode}
           exportCSV={handleExportCSV}
