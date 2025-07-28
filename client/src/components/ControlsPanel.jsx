@@ -55,8 +55,8 @@ export default function ControlsPanel({
               step={0.1}
               value={likes}
               onChange={(e) => setLikes(parseFloat(e.target.value))}
-              onMouseUp={handleCommit}
-              onTouchEnd={handleCommit}
+              onMouseUp={(e) => handleCommit(parseFloat(e.target.value))}
+              onTouchEnd={(e) => handleCommit(parseFloat(e.target.value))}
             />
             <div>{likes.toFixed(1)}</div>
           </Form.Group>

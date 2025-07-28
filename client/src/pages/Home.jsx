@@ -62,6 +62,7 @@ export default function Home() {
   }
 
   const loadMore = useCallback(async () => {
+    console.log(likes)
     const { ok, data } = await loadBooks({
       seed,
       lang,
@@ -72,16 +73,17 @@ export default function Home() {
     });
     setBooks((prev) => [...prev, ...data]);
     setPage((prev) => prev + 1);
-  }, [page]);
+  }, [page, likes, lang, reviews, seed]);;
 
   useEffect(() => {
     getBooks();
   }, [seed, lang, reviews]);
 
-  const handleCommit = () => {
-    setLikes(likes);
-    getBooks( likes);
+  const handleCommit = (latestLikes) => {
+    setLikes(latestLikes);
+    getBooks(latestLikes);
   };
+
 
   useEffect(() => {
     const loadRegions = async () => {
