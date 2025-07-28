@@ -43,6 +43,7 @@ export default function Home() {
         setBooks(data);
         setPage(1);
         setExpandedIndex(null);
+        window.scrollTo(0, 0);
       }
     }catch (err) {
       toast("Error via loading books:", err);
